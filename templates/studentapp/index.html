@@ -1,0 +1,90 @@
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+<table  align="left">
+<form method="post" action="/">
+{% csrf_token %}
+{% for field in form %}
+    <tr>
+    <div class="studentform">
+        {{ field.errors }}
+     <td><b>{{ field.label_tag }}</b></td>
+     <td>{{ field }}</td>
+    </div>
+    </tr>
+{% endfor %}
+<td align="center"><input type="submit" value="Submit Form"/></td>
+</form>
+</table>
+
+<table  align="right">
+<div style="margin-left: 60% ">
+<h3>Students</h3>
+</div>
+    <tr>
+
+        <th>Name</th>
+
+        <th>Maths Score</th>
+
+        <th>Science Score</th>
+
+        <th>History Score</th>
+
+        <th>Social Score</th>
+    </tr>
+    {% for item in data %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.maths_score }} </td>
+        <td>{{ item.science_score }} </td>
+        <td>{{ item.history_score }} </td>
+        <td>{{ item.social_score }} </td>
+        <td><a href="{% url 'update' item.id %}">Update</a></td>
+        <td><a href="{% url 'delete' item.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div style="margin-left: 60%;">
+<h3>Filter</h3>
+<form method="post" action="/filter/">
+{% csrf_token %}
+<input type="text" id ="inp" align="right" name = "text" />
+<input type="submit"  align="right" />
+</form>
+
+{% if filter %}
+
+<table  align="right" >
+    <tr>
+        <th>Name</th>
+
+        <th>Maths Score</th>
+
+        <th>Science Score</th>
+
+        <th>History Score</th>
+
+        <th>Social Score</th>
+    </tr>
+    {% for item in filter_data %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.maths_score }} </td>
+        <td>{{ item.science_score }} </td>
+        <td>{{ item.history_score }} </td>
+        <td>{{ item.social_score }} </td>
+        <td><a href="{% url 'update' item.id %}">Update</a></td>
+        <td><a href="{% url 'delete' item.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+</div>

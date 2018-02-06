@@ -1,0 +1,25 @@
+Task Details : 
+
+1. Create a full stack application for creating, updating and deleting a student entry. The student entry will have the following attributes
+
+1. Name : Shashank
+
+2. Scores : 
+ a. Maths : 99
+
+  b. Science : 98
+
+  c. History: 97
+
+  d. Social Studies : 96
+
+2. Create a functionality to find similar profiles. Create your own rule for the same. 
+3. Host the application on heroku or aws or a hosting of your choice.
+
+Use the language of your choice
+Commit the code to GIT and pass me the link
+Your work will be judged on the following:
+Code organizations
+OOP concepts
+Extensibility
+Documentation 
